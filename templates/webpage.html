@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pest Infestation Prediction</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #152238, #080E18);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .prediction-box {
+      background: linear-gradient(to bottom, #152238, #080E18);
+      color: white;
+      float: right;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 200px;
+      margin-right: 400px;
+      text-align: center;
+    }
+
+    .prediction-text {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    h1 {
+      color: #FFFFFF;
+      background:linear-gradient(to bottom, #152238, #080E18);
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+
+    form {
+	float: left;
+      color: white;
+      background: linear-gradient(to bottom, #152238, #080E18);
+      margin-left: 120px;
+      text-align: left;
+      align-items: center;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: white;
+    }
+
+    select, input[type="number"], input[type="checkbox"] {
+      width: 200px;
+      padding: 8px;
+      border: 1px solid #CCCCCC;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #333333;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 align = "center">Pest Infestation Prediction</h1>
+  <form action = "\predict" method = "POST">
+    <label for="species">Species:</label>
+    <select id="species" name="species">
+      <option value="Anoplophora_chinensis">Anoplophora chinensis</option>
+      <option value="Apriona_germari-Hope-">Apriona germari (Hope)</option>
+      <option value="Cerambycidae_larvae">Cerambycidae larvae</option>
+      <option value="Chalcophora_japonica">Chalcophora japonica</option>
+      <option value="Clostera_anachoretas">Clostera anachoretas</option>
+      <option value="Cnidocampa_flavescens-Walker-">Cnidocampa flavescens (Walker)</option>
+      <option value="Cnidocampa_flavescens-Walker_pupa-">Cnidocampa flavescens (Walker) pupa</option>
+      <option value="Drosicha_contrahens_female">Drosicha contrahens female</option>
+      <option value="Drosicha_contrahens_male">Drosicha contrahens male</option>
+      <option value="Erthesina_fullo">Erthesina fullo</option>
+      <option value="Erthesina_fullo_nymph">Erthesina fullo nymph</option>
+      <option value="Erthesina_fullo_nymph-2">Erthesina fullo nymph-2</option>
+      <option value="Hyphantria_cunea">Hyphantria cunea</option>
+      <option value="Hyphantria_cunea_larvae">Hyphantria cunea larvae</option>
+      <option value="Hyphantria_cunea_pupa">Hyphantria cunea pupa</option>
+      <option value="Latoia_consocia_Walker">Latoia consocia (Walker)</option>
+      <option value="Latoia_consocia_Walker_larvae">Latoia consocia (Walker) larvae</option>
+      <option value="Micromelalopha_troglodyta-Graeser-">Micromelalopha troglodyta (Graeser)</option>
+      <option value="Micromelalopha_troglodyta-Graeser-_larvae">Micromelalopha troglodyta (Graeser) larvae</option>
+      <option value="Monochamus_alternatus">Monochamus alternatus</option>
+      <option value="Plagiodera_versicolora-Laicharting-">Plagiodera versicolora (Laicharting)</option>
+      <option value="Plagiodera_versicolora-Laicharting-_larvae">Plagiodera versicolora (Laicharting) larvae</option>
+      <option value="Plagiodera_versicolora-Laicharting-_ovum">Plagiodera versicolora (Laicharting) ovum</option>
+      <option value="Psacothea_hilaris-Pascoe-">Psacothea hilaris (Pascoe)</option>
+      <option value="Psilogramma_menephron">Psilogramma menephron</option>
+      <option value="Psilogramma_menephron_larvae">Psilogramma menephron larvae</option>
+      <option value="Sericinus_montela">Sericinus montela</option>
+      <option value="Sericinus_montela_larvae">Sericinus montela larvae</option>
+      <option value="Spilarctia_subcarnea-Walker-">Spilarctia subcarnea (Walker)</option>
+      <option value="Spilarctia_subcarnea-Walker-_larvae">Spilarctia subcarnea (Walker) larvae</option>
+      <option value="Spilarctia_subcarnea-Walker-_larvae-2">Spilarctia subcarnea (Walker) larvae-2</option>
+    </select>
+
+    <label for="minTemp">Minimum Temperature:</label>
+    <input type="number" id="minTemp" name="minTemp" required>
+
+    <label for="maxTemp">Maximum Temperature:</label>
+    <input type="number" id="maxTemp" name="maxTemp" required>
+
+    <label for="humidity">Relative Humidity (%):</label>
+    <input type="number" id="humidity" name="humidity" required>
+
+    <label for="windSpeed">Wind Speed:</label>
+    <input type="number" id="windSpeed" name="windSpeed" required>
+
+    <label for="sunshineHours">Bright Sunshine Hours:</label>
+    <input type="number" id="sunshineHours" name="sunshineHours" required>
+
+    <label for="rain">Rain:</label>
+    <input type="number" id="rain" name="rain" required>
+
+    <label for="evaporation">Evaporation:</label>
+    <input type="number" id="evaporation" name="evaporation" required>
+
+    <label for="treatment">Treatment:</label>
+    <input type="checkbox" id="treatment" name="treatment">
+
+    <input type="submit" value="Predict">
+  </form>
+
+  <div class="prediction-box">
+    <p class="prediction-text">{{ prediction_text }}</p>
+  </div>
+
+</body>
+</html>
+
