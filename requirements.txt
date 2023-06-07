@@ -2,4 +2,3 @@ gunicorn
 numpy
 flask
 scikit-learn
-os
